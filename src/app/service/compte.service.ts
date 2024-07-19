@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Compte } from '../Modal/modele.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class CompteService {
 
   constructor(private http:HttpClient) { }
 
-  getComptes(id:number):Observable<any>{
-    return this.http.get('http://localhost:8080/showaccounts/{id}');
+  getComptes(userId:number):Observable<Array<Compte>>{
+    return this.http.get<Array<Compte>>('http://localhost:8080/showaccounts/'+userId);
 
   }
 

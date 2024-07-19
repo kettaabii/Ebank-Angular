@@ -1,1 +1,36 @@
-<p>account works!</p>
+<table mat-table [dataSource]="datasource" class="mat-elevation-z8">
+
+    <!-- Numero de Compte Column -->
+    <ng-container matColumnDef="Numero de Compte">
+      <th mat-header-cell *matHeaderCellDef> Numero de Compte </th>
+      <td mat-cell *matCellDef="let element"> {{element.account_number}} </td>
+    </ng-container>
+    
+    <!-- Type Column -->
+    <ng-container matColumnDef="Type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.account_type}} </td>
+    </ng-container>
+  
+    <!-- Solde Column -->
+    <ng-container matColumnDef="Solde">
+      <th mat-header-cell *matHeaderCellDef> Solde </th>
+      <td mat-cell *matCellDef="let element"> {{element.solde}} </td>
+    </ng-container>
+  
+    <!-- Date Creation Column -->
+    <ng-container matColumnDef="Date Creation">
+      <th mat-header-cell *matHeaderCellDef> Date Creation </th>
+      <td mat-cell *matCellDef="let element"> {{element.date_creation}} </td>
+    </ng-container>
+  
+    <!-- Status Column -->
+    <ng-container matColumnDef="Status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
