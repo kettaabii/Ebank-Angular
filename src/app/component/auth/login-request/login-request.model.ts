@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LoginService } from '../service/login.service';
-import { LoginRequest } from '../Modal/login-request.model';
+import { LoginService } from '../../../service/login.service';
+import { LoginRequest, LoginResponse } from '../../../Modal/auth.model';
 
 @Component({
   selector: 'app-login-request',
@@ -26,10 +26,11 @@ export class LoginRequestModel {
     if(this.loginForm.valid){
       const loginRequest: LoginRequest = this.loginForm.value as LoginRequest;
       this.loginService.login(loginRequest).subscribe({
-        next: (response: string) => {
-          let token = response;
-          console.log(token)
-          localStorage.setItem('auth-token', token)
+        next: (response: LoginResponse) => {
+          const loginResponse:LoginResponse =response;
+          console.log(loginResponse)
+          console.log(loginResponse.token)
+          localStorage.setItem('auth-token', loginResponse.token)
         },
         error: (err)=>{
           console.log(err)

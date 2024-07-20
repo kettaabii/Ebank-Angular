@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Compte } from '../Modal/modele.model';
-import { CompteService } from '../service/compte.service';
+import { Compte } from '../../Modal/modele.model';
+import { CompteService } from '../../service/compte.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../../material/material.module';
 
 @Component({
   selector: 'app-account',
