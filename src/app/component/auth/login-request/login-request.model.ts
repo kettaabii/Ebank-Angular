@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../../service/login.service';
 import { LoginRequest, LoginResponse } from '../../../Modal/auth.model';
+import { MaterialModule } from '../../../material/material.module';
+import { Router , RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-request',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule , MaterialModule, RouterLink
   ],
   templateUrl: './login-request.model.html',
   styleUrl: './login-request.model.css'
@@ -15,7 +17,7 @@ import { LoginRequest, LoginResponse } from '../../../Modal/auth.model';
 export class LoginRequestModel {
   loginForm: FormGroup;
 
-  constructor(private loginService: LoginService, private fb: FormBuilder){
+  constructor(private loginService: LoginService, private fb: FormBuilder,  private router: Router){
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -31,6 +33,8 @@ export class LoginRequestModel {
           console.log(loginResponse)
           console.log(loginResponse.token)
           localStorage.setItem('auth-token', loginResponse.token)
+          localStorage.setItem('userid',String(loginResponse.user.userId))
+          this.router.navigateByUrl('/');
         },
         error: (err)=>{
           console.log(err)
