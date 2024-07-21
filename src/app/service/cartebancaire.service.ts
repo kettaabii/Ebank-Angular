@@ -27,6 +27,6 @@ export class CartebancaireService {
   }
 
   showAllCards(id:number):Observable<any>{
-    return this.http.get('http://localhost:8080/card/all/{id}')
+    return this.http.get('http://localhost:8080/card/all/'+id)
   }
 }

@@ -1,0 +1,14 @@
+<div class="account-cards-container">
+    <mat-card *ngFor="let element of listeCartes" class="account-card" (click)="selectCard(element)">
+      <mat-card-header>
+        <mat-card-title>Account Number: {{element.cardNumber}}</mat-card-title>
+        <mat-card-subtitle>Type: {{element.cardType}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Solde: {{element.expirationDate}}</p>
+        <p>network: {{element.network}}</p>
+        
+        
+      </mat-card-content>
+    </mat-card>
+  </div>
