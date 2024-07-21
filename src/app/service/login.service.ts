@@ -20,4 +20,7 @@ export class LoginService {
   signup(_data:SignupRequest):Observable<any>{
     return this.HttpClient.post(this.URL + 'signup',_data , {responseType: 'text'})
   }
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('auth-token');
+  }
 }
